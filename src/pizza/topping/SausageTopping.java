@@ -16,3 +16,4 @@ public class SausageTopping extends MeatTopping {
 		return "Sausage Topping";
 	}
 }
+
