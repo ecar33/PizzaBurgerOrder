@@ -7,12 +7,9 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 public class PrimaryController {
 
-    // @FXML
-    private Label welcomeLabel;
-    private ChoiceBox<String> crustChoiceBox;
-
-    // @FXML
-    // private ChoiceBox<String> crustChoiceBox, sauceChoiceBox;
+    @FXML
+    private ChoiceBox<String> crustChoiceBox, sauceChoiceBox;
+    
     
     // @FXML
     // private Button addCrustButton, addSauceButton, addMeatToppingsButton, addCheeseToppingsButton, addVeggieToppingsButton, addPizzaButton, checkoutButton;
@@ -21,16 +18,15 @@ public class PrimaryController {
     // private CheckBox sausageCheckBox, pepperoniCheckBox, asiagoCheckBox, mozzarellaCheckBox, pepperCheckBox, mushroomCheckBox;
 
     // Method to initialize your controller. Called after the FXML fields are populated.
-    // @FXML
-    // public void initialize() {
-    //     // Example of populating the ChoiceBoxes. Adjust with actual data.
-    //     crustChoiceBox.getItems().addAll("Thin Crust", "Thick Crust", "Cheese Crust");
-    //     sauceChoiceBox.getItems().addAll("Tomato Sauce", "Pesto Sauce", "White Garlic Sauce");
-
-    //     // Set default selection
-    //     crustChoiceBox.getSelectionModel().selectFirst();
-    //     sauceChoiceBox.getSelectionModel().selectFirst();
-    // }
+    @FXML
+    public void initialize() {
+        // Example of populating the ChoiceBoxes. Adjust with actual data.
+        crustChoiceBox.getItems().addAll("Thin Crust", "Thick Crust", "Cheese Crust");
+        sauceChoiceBox.getItems().addAll("Tomato Sauce", "Pesto Sauce", "White Garlic Sauce");
+        // Set default selection
+        crustChoiceBox.getSelectionModel().selectFirst();
+        sauceChoiceBox.getSelectionModel().selectFirst();
+    }
 
     // // Example of a handler method for adding a crust. Adapt as necessary.
     // @FXML
