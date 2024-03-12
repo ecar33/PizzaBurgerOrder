@@ -12,14 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF9F0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF9F0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.PrimaryController">
    <children>
       <HBox layoutY="6.0" prefHeight="394.0" prefWidth="600.0">
          <children>
             <VBox prefHeight="394.0" prefWidth="450.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Welcome to Johnny's Crazy Pizza and Burgers" textFill="#303030">
+                  <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Welcome to Johnny's Crazy Pizza and Burgers" textFill="#303030">
                      <font>
                         <Font name="Open Sans" size="14.0" />
                      </font>
@@ -29,7 +28,7 @@
                         <VBox alignment="CENTER" prefHeight="95.0" prefWidth="158.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label text="Select crust:" textFill="#303030" />
-                              <ChoiceBox prefHeight="19.0" prefWidth="117.0">
+                              <ChoiceBox fx:id="crustChoiceBox" prefHeight="19.0" prefWidth="117.0">
                                  <VBox.margin>
                                     <Insets top="15.0" />
                                  </VBox.margin>

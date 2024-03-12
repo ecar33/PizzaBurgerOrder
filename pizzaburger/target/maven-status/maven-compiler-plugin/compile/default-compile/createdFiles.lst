@@ -8,7 +8,7 @@ com/pizzaburger/pizza/topping/MushroomTopping.class
 com/pizzaburger/pizza/MenuItem.class
 module-info.class
 com/pizzaburger/pizza/crust/PizzaCrust.class
-com/pizzaburger/controllers/PizzaBurgerController.class
+com/pizzaburger/PrimaryController.class
 com/pizzaburger/pizza/topping/PepperTopping.class
 com/pizzaburger/pizza/topping/VeggieTopping.class
 com/pizzaburger/pizza/topping/MeatTopping.class
