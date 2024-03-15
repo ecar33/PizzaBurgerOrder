@@ -1,6 +1,7 @@
 com/pizzaburger/pizza/topping/SausageTopping.class
 com/pizzaburger/App.class
 com/pizzaburger/pizza/crust/ThickCrust.class
+com/pizzaburger/controllers/PizzaController.class
 com/pizzaburger/pizza/Pizza.class
 com/pizzaburger/pizza/topping/PepperoniTopping.class
 com/pizzaburger/pizza/sauce/TomatoSauce.class
@@ -10,7 +11,8 @@ module-info.class
 com/pizzaburger/pizza/sauce/WhiteGarlicSauce.class
 com/pizzaburger/pizza/crust/PizzaCrust.class
 com/pizzaburger/pizza/crust/CheeseCrust.class
-com/pizzaburger/PrimaryController.class
+com/pizzaburger/controllers/MainMenuController.class
+com/pizzaburger/controllers/BurgerController.class
 com/pizzaburger/pizza/topping/VeggieTopping.class
 com/pizzaburger/pizza/topping/PepperTopping.class
 com/pizzaburger/pizza/topping/MeatTopping.class

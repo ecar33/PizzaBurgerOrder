@@ -1,17 +1,23 @@
-package com.pizzaburger;
+package com.pizzaburger.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 
-public class PrimaryController {
+public class PizzaController {
 
     @FXML
     private ChoiceBox<String> crustChoiceBox, sauceChoiceBox;
@@ -71,6 +77,26 @@ public class PrimaryController {
         });
         // Handle any additional logic here, such as updating a model or view
     }
+
+    @FXML
+    private void switchToMenuView(ActionEvent event) {
+        try {
+            // Load the FXML file for the new scene
+
+            URL fxmlLocation = MainMenuController.class.getResource("/com/pizzaburger/main_menu.fxml");
+
+            Parent newSceneRoot = FXMLLoader.load(fxmlLocation);
+            Scene newScene = new Scene(newSceneRoot);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(newScene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 // @FXML
@@ -86,4 +112,3 @@ public class PrimaryController {
 // }
 
 // // Add methods for handling topping selections and any other interactions
-
