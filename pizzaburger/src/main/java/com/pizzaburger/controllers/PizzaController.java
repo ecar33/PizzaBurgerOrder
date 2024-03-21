@@ -55,16 +55,18 @@ public class PizzaController {
     @FXML
     private void handleAddCrust(ActionEvent event) {
         String selectedCrust = crustChoiceBox.getSelectionModel().getSelectedItem();
-        System.out.println("Crust added: " + selectedCrust);
-        // Implement your logic here (e.g., updating a model or view)
+        if (!selectedCrust.isEmpty()){
+            System.out.println("Crust added: " + selectedCrust);
+        }
     }
 
-    // // Similar methods for other buttons and choice boxes...
 
     @FXML
     private void handleAddSauce(ActionEvent event) {
         String selectedSauce = sauceChoiceBox.getSelectionModel().getSelectedItem();
-        System.out.println("Sauce added: " + selectedSauce);
+        if (!selectedSauce.isEmpty()) {
+            System.out.println("Sauce added: " + selectedSauce);
+        }
         // Implement your logic here
     }
 
@@ -75,7 +77,6 @@ public class PizzaController {
                 System.out.println(checkBox.getText() + " is selected.");
             }
         });
-        // Handle any additional logic here, such as updating a model or view
     }
 
     @FXML
