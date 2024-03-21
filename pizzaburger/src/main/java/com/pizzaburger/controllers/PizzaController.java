@@ -6,18 +6,32 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
+import com.pizzaburger.pizza.*;
+import com.pizzaburger.pizza.crust.*;
+import com.pizzaburger.pizza.sauce.*;
+import com.pizzaburger.pizza.topping.*;
+
 import javafx.event.ActionEvent;
 
 public class PizzaController {
+
+    private Pizza currentPizza = new Pizza();
+
+    @FXML
+    private ListView<String> toppingsListView;
+    
+    @FXML
+    private Label sauceLabel, crustLabel;
 
     @FXML
     private ChoiceBox<String> crustChoiceBox, sauceChoiceBox;
@@ -27,10 +41,8 @@ public class PizzaController {
             addVeggieToppingsButton, addPizzaButton, checkoutButton;
 
     @FXML
-    private CheckBox sausageCheckBox, pepperoniCheckBox, asiagoCheckBox, mozzarellaCheckBox, pepperCheckBox,
-            mushroomCheckBox;
-
-    private List<CheckBox> toppingCheckBoxList;
+    private Button sausageButton, pepperoniButton, asiagoButton, mozzarellaButton, pepperButton,
+            mushroomButton;
 
     // Method to initialize your controller. Called after the FXML fields are
     // populated.
@@ -39,12 +51,6 @@ public class PizzaController {
         // Example of populating the ChoiceBoxes. Adjust with actual data.
         crustChoiceBox.getItems().addAll("Thin Crust", "Thick Crust", "Cheese Crust");
         sauceChoiceBox.getItems().addAll("Tomato Sauce", "Alfredo Sauce", "White Garlic Sauce");
-
-        toppingCheckBoxList = Arrays.asList(sausageCheckBox, pepperoniCheckBox, asiagoCheckBox, mozzarellaCheckBox,
-                pepperCheckBox, mushroomCheckBox);
-
-        // Example usage: Print all checkbox texts
-        toppingCheckBoxList.forEach(checkBox -> System.out.println(checkBox.getText()));
 
         // Set default selection
         crustChoiceBox.getSelectionModel().selectFirst();
@@ -55,28 +61,53 @@ public class PizzaController {
     @FXML
     private void handleAddCrust(ActionEvent event) {
         String selectedCrust = crustChoiceBox.getSelectionModel().getSelectedItem();
-        if (!selectedCrust.isEmpty()){
-            System.out.println("Crust added: " + selectedCrust);
+        if (!selectedCrust.isEmpty()) {
+            PizzaCrust crust = PizzaMappings.crustMapping.get(selectedCrust);
+            if (crust != null) {
+                currentPizza.setCrust(crust);
+            }
+        }
+        updateCrustDisplay(currentPizza);
+    }
+
+    public void updateToppingsListView(Pizza pizza) {
+        toppingsListView.getItems().clear();
+
+        for (PizzaTopping topping : pizza.getToppings()) {
+            toppingsListView.getItems().add(topping.toString());
         }
     }
 
+    public void updateCrustDisplay(Pizza pizza) {
+        String crust = pizza.getCrust().toString();
+        crustLabel.setText(crust);
+    }
+
+    public void updateSauceDisplay(Pizza pizza) {
+        String sauce = pizza.getSauce().toString();
+        sauceLabel.setText(sauce);
+    }
 
     @FXML
     private void handleAddSauce(ActionEvent event) {
         String selectedSauce = sauceChoiceBox.getSelectionModel().getSelectedItem();
         if (!selectedSauce.isEmpty()) {
-            System.out.println("Sauce added: " + selectedSauce);
+            PizzaSauce sauce = PizzaMappings.sauceMapping.get(selectedSauce);
+            if (sauce != null) {
+                currentPizza.setSauce(sauce);
+            }
         }
-        // Implement your logic here
+        updateSauceDisplay(currentPizza);
     }
 
     @FXML
     private void handleAddTopping(ActionEvent event) {
-        toppingCheckBoxList.forEach(checkBox -> {
-            if (checkBox.isSelected()) {
-                System.out.println(checkBox.getText() + " is selected.");
-            }
-        });
+        Button button = (Button) event.getSource();
+        PizzaTopping topping = PizzaMappings.toppingMapping.get(button.getText());
+        if (topping != null) {
+            currentPizza.addTopping(topping);
+        }
+        updateToppingsListView(currentPizza);
     }
 
     @FXML
@@ -99,17 +130,3 @@ public class PizzaController {
         }
     }
 }
-
-// @FXML
-// private void handleAddPizza(ActionEvent event) {
-// // Implement your logic for adding a pizza with selected options
-// System.out.println("Pizza added to order.");
-// }
-
-// @FXML
-// private void handleCheckout(ActionEvent event) {
-// // Implement your logic for checking out
-// System.out.println("Proceeding to checkout...");
-// }
-
-// // Add methods for handling topping selections and any other interactions

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,12 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
-style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.BurgerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.BurgerController">
    <children>
-      <HBox prefHeight="394.0" prefWidth="600.0">
+      <HBox prefHeight="394.0" prefWidth="800.0">
          <children>
-            <VBox prefHeight="394.0" prefWidth="450.0">
+            <VBox prefHeight="394.0" prefWidth="570.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Welcome to Johnny's Crazy Pizza and Burgers" textFill="#303030">
                      <font>
@@ -34,7 +34,7 @@ style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21" xmlns:
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </ChoiceBox>
-                              <Button fx:id="addBunButton" onAction="#handleAddBun" mnemonicParsing="false" text="Add bun">
+                              <Button fx:id="addBunButton" mnemonicParsing="false" onAction="#handleAddBun" text="Add bun">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -49,7 +49,7 @@ style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21" xmlns:
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </ChoiceBox>
-                              <Button fx:id="addSauceButton" onAction="#handleAddSauce" mnemonicParsing="false" text="Add sauce">
+                              <Button fx:id="addSauceButton" mnemonicParsing="false" onAction="#handleAddSauce" text="Add sauce">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -58,14 +58,14 @@ style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21" xmlns:
                         </VBox>
                      </children>
                   </HBox>
-                  <VBox alignment="CENTER" fillWidth="false" prefHeight="177.0" prefWidth="250.0">
+                  <VBox alignment="CENTER" fillWidth="false" prefHeight="178.0" prefWidth="649.0">
                      <children>
                         <Label alignment="CENTER" text="Choose your toppings : ">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <TabPane prefHeight="159.0" prefWidth="451.0" style="-fx-tab-header-background: #ffffff;" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="159.0" prefWidth="599.0" style="-fx-tab-header-background: #ffffff;" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Meat">
                                  <content>
@@ -73,7 +73,7 @@ style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21" xmlns:
                                        <children>
                                           <CheckBox fx:id="baconCheckBox" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Bacon" textFill="#606060" />
                                           <CheckBox fx:id="pattyCheckBox" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" text="Patty" textFill="#606060" />
-                                          <Button alignment="CENTER" layoutX="168.0" layoutY="87.0" onAction="#handleAddTopping" mnemonicParsing="false" text="Add toppings" />
+                                          <Button alignment="CENTER" layoutX="168.0" layoutY="87.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Add toppings" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -117,13 +117,17 @@ style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21" xmlns:
                   </Button>
                </children>
             </VBox>
-            <VBox prefHeight="394.0" prefWidth="93.0" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="394.0" prefWidth="238.0" style="-fx-background-color: f5f5f5;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="389.0" prefWidth="150.0" style="-fx-background-color: f5f5f5;">
+                  <VBox alignment="CENTER" prefHeight="389.0" prefWidth="150.0">
                      <children>
-                        <Label alignment="CENTER" text="Shopping Cart" />
-                        <VBox prefHeight="343.0" prefWidth="150.0" />
-                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" text="Checkout">
+                        <Label alignment="CENTER" text="Current Burger:" />
+                        <VBox prefHeight="343.0" prefWidth="150.0">
+                           <children>
+                              <ListView fx:id="shoppingCartListView" prefHeight="336.0" prefWidth="468.0" />
+                           </children>
+                        </VBox>
+                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Checkout">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

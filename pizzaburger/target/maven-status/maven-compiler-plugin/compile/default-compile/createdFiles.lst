@@ -15,13 +15,14 @@ com/pizzaburger/controllers/MainMenuController.class
 com/pizzaburger/controllers/BurgerController.class
 com/pizzaburger/pizza/topping/VeggieTopping.class
 com/pizzaburger/pizza/topping/PepperTopping.class
+com/pizzaburger/pizza/PizzaMappings.class
 com/pizzaburger/pizza/topping/MeatTopping.class
 com/pizzaburger/pizza/PizzaMain.class
 com/pizzaburger/pizza/topping/PizzaTopping.class
 com/pizzaburger/pizza/sauce/PizzaSauce.class
 com/pizzaburger/pizza/topping/MozzarellaTopping.class
-com/pizzaburger/pizza/topping/CheeseTopping.class
 com/pizzaburger/pizza/crust/ThinCrust.class
+com/pizzaburger/pizza/topping/CheeseTopping.class
 com/pizzaburger/pizza/AbstractMenuItem.class
 com/pizzaburger/pizza/sauce/AlfredoSauce.class
 com/pizzaburger/pizza/topping/AsiagoTopping.class
