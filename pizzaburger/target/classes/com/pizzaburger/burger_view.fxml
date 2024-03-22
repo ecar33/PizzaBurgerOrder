@@ -13,7 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.BurgerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="com.pizzaburger.controllers.BurgerController">
    <children>
       <HBox prefHeight="394.0" prefWidth="800.0">
          <children>
@@ -117,21 +118,59 @@
                   </Button>
                </children>
             </VBox>
-            <VBox prefHeight="394.0" prefWidth="238.0" style="-fx-background-color: f5f5f5;">
+            <VBox alignment="CENTER" prefHeight="394.0" prefWidth="238.0" style="-fx-background-color: f5f5f5;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="389.0" prefWidth="150.0">
+                  <Label alignment="CENTER" text="Current Burger:" />
+                  <VBox alignment="CENTER" prefHeight="354.0" prefWidth="234.0">
                      <children>
-                        <Label alignment="CENTER" text="Current Burger:" />
                         <VBox prefHeight="343.0" prefWidth="150.0">
                            <children>
-                              <ListView fx:id="shoppingCartListView" prefHeight="336.0" prefWidth="468.0" />
+                              <Label text="Crust:">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="bunLabel">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Sauce:">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="sauceLabel">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Toppings:">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <ListView fx:id="toppingsListView" prefHeight="336.0" prefWidth="250.0">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </ListView>
+                              <HBox alignment="CENTER" prefHeight="36.0" prefWidth="230.0">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleAddBurger" prefHeight="26.0" prefWidth="94.0" text="Add Burger">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="restartBurgerButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#restartBurger" prefHeight="26.0" prefWidth="94.0" text="Restart">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
-                        <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Checkout">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Button>
                      </children>
                   </VBox>
                </children>

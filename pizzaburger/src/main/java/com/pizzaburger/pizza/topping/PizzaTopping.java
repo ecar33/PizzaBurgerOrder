@@ -1,5 +1,5 @@
 package com.pizzaburger.pizza.topping;
-import com.pizzaburger.pizza.AbstractMenuItem;
+import com.pizzaburger.menuitem.AbstractMenuItem;
 
 /**
  * {@code PizzaTopping} represents all possible toppings that can go on a pizza

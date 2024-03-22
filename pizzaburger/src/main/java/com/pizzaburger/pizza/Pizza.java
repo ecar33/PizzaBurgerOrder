@@ -3,6 +3,8 @@ package com.pizzaburger.pizza;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.pizzaburger.menuitem.AbstractMenuItem;
+import com.pizzaburger.menuitem.MenuItem;
 import com.pizzaburger.pizza.crust.PizzaCrust;
 import com.pizzaburger.pizza.sauce.PizzaSauce;
 import com.pizzaburger.pizza.topping.PizzaTopping;

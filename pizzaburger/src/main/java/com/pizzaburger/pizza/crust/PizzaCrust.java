@@ -1,5 +1,5 @@
 package com.pizzaburger.pizza.crust;
-import com.pizzaburger.pizza.AbstractMenuItem;
+import com.pizzaburger.menuitem.AbstractMenuItem;
 
 /**
  * {@code PizzaTopping} represents all possible pizza crusts

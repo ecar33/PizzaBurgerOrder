@@ -1,5 +1,5 @@
 package com.pizzaburger.pizza.sauce;
-import com.pizzaburger.pizza.AbstractMenuItem;
+import com.pizzaburger.menuitem.AbstractMenuItem;
 
 /**
  * {@code PizzaSauce} represents all possible sauces that can go on a pizza
