@@ -2,62 +2,83 @@ package com.pizzaburger.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
-
+import com.pizzaburger.cart.ShoppingCart;
+import com.pizzaburger.cart.ShoppingCartConsumer;
+import com.pizzaburger.util.CustomFXMLLoader;
 import javafx.event.ActionEvent;
 
-public class MainMenuController {
+public class MainMenuController implements ShoppingCartConsumer {
+
+    private ShoppingCart shoppingCart;
+    private CustomFXMLLoader customLoader;
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+        this.customLoader = new CustomFXMLLoader(this.shoppingCart);
+    }
 
     @FXML
     private Button pizzaViewButton, burgerViewButton, viewCartButton;
 
+
     @FXML
-    private void switchPizzaScene(ActionEvent event) {
-        try {
-            // Load the FXML file for the new scene
-
-            URL fxmlLocation = MainMenuController.class.getResource("/com/pizzaburger/pizza_view.fxml");
-
-            Parent newSceneRoot = FXMLLoader.load(fxmlLocation);
-            Scene newScene = new Scene(newSceneRoot);
-            
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            stage.setScene(newScene);
-            stage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void switchToPizzaView(ActionEvent event) {
+      try {
+        if (this.customLoader == null) {
+          this.customLoader = new CustomFXMLLoader(this.shoppingCart);
         }
+
+        shoppingCart.printCart();
+        Parent newSceneRoot = customLoader.load("/com/pizzaburger/pizza_view.fxml");
+        Scene newScene = new Scene(newSceneRoot);
+  
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+  
+        stage.setScene(newScene);
+        stage.show();
+  
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  
+
+    @FXML
+    private void switchToBurgerView(ActionEvent event) {
+      try {
+        if (this.customLoader == null) {
+          this.customLoader = new CustomFXMLLoader(this.shoppingCart);
+        }
+        Parent newSceneRoot = customLoader.load("/com/pizzaburger/burger_view.fxml");
+        Scene newScene = new Scene(newSceneRoot);
+  
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+  
+        stage.setScene(newScene);
+        stage.show();
+  
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
 
     @FXML
-    private void switchBurgerScene(ActionEvent event) {
+    private void switchToCartView(ActionEvent event) {
         try {
-            // Load the FXML file for the new scene
-
-            URL fxmlLocation = MainMenuController.class.getResource("/com/pizzaburger/burger_view.fxml");
-
-            Parent newSceneRoot = FXMLLoader.load(fxmlLocation);
+            if (this.customLoader == null) {
+                this.customLoader = new CustomFXMLLoader(this.shoppingCart);
+            }
+            Parent newSceneRoot = customLoader.load("/com/pizzaburger/cart.fxml");
             Scene newScene = new Scene(newSceneRoot);
-            
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
             stage.setScene(newScene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-
-
-

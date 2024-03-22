@@ -12,7 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.PizzaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" 
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.PizzaController">
    <children>
       <HBox prefHeight="394.0" prefWidth="800.0">
          <children>
@@ -149,12 +150,21 @@
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding></ListView>
+                              <HBox alignment="CENTER" prefHeight="36.0" prefWidth="230.0">
+                                 <children>
+                                    <Button onAction="#handleAddPizza" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Add Pizza">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button onAction="#restartPizza" fx:id="restartPizzaButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Restart">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children></VBox>
-                        <Button fx:id="addPizzaButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Add Pizza">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Button>
                      </children>
                   </VBox>
                </children>

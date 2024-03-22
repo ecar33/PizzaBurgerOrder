@@ -1,7 +1,6 @@
 package com.pizzaburger.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,27 +8,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-
 import com.pizzaburger.pizza.*;
 import com.pizzaburger.pizza.crust.*;
 import com.pizzaburger.pizza.sauce.*;
 import com.pizzaburger.pizza.topping.*;
 
+import com.pizzaburger.cart.*;
+
+import com.pizzaburger.util.CustomFXMLLoader;
+
 import javafx.event.ActionEvent;
 
-public class PizzaController {
+public class PizzaController implements ShoppingCartConsumer {
 
-    private Pizza currentPizza = new Pizza();
+    private ShoppingCart shoppingCart;
+    private CustomFXMLLoader customLoader;
+
+    private Pizza currentPizza = generateDefaultPizza();
 
     @FXML
     private ListView<String> toppingsListView;
-    
+
     @FXML
     private Label sauceLabel, crustLabel;
 
@@ -44,8 +44,12 @@ public class PizzaController {
     private Button sausageButton, pepperoniButton, asiagoButton, mozzarellaButton, pepperButton,
             mushroomButton;
 
-    // Method to initialize your controller. Called after the FXML fields are
-    // populated.
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+        this.customLoader = new CustomFXMLLoader(this.shoppingCart); 
+    }
+
+
     @FXML
     public void initialize() {
         // Example of populating the ChoiceBoxes. Adjust with actual data.
@@ -55,6 +59,16 @@ public class PizzaController {
         // Set default selection
         crustChoiceBox.getSelectionModel().selectFirst();
         sauceChoiceBox.getSelectionModel().selectFirst();
+
+        updateCrustDisplay(currentPizza);
+        updateSauceDisplay(currentPizza);
+    }
+
+    private Pizza generateDefaultPizza() {
+        PizzaSauce tomatoSauce = new TomatoSauce();
+        PizzaCrust thickCrust = new ThinCrust();
+        Pizza defaultPizza = new Pizza(thickCrust, tomatoSauce);
+        return defaultPizza;
     }
 
     // Example of a handler method for adding a crust. Adapt as necessary.
@@ -113,11 +127,11 @@ public class PizzaController {
     @FXML
     private void switchToMenuView(ActionEvent event) {
         try {
-            // Load the FXML file for the new scene
+            if (this.customLoader == null) {
+                this.customLoader = new CustomFXMLLoader(this.shoppingCart);
+            }
 
-            URL fxmlLocation = MainMenuController.class.getResource("/com/pizzaburger/main_menu.fxml");
-
-            Parent newSceneRoot = FXMLLoader.load(fxmlLocation);
+            Parent newSceneRoot = customLoader.load("/com/pizzaburger/main_menu.fxml");
             Scene newScene = new Scene(newSceneRoot);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -128,5 +142,37 @@ public class PizzaController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleAddPizza(ActionEvent event) {
+        shoppingCart.addPizza(currentPizza);
+        switchToCartView(event);
+    }
+
+    @FXML
+    private void switchToCartView(ActionEvent event) {
+        try {
+            if (this.customLoader == null) {
+                this.customLoader = new CustomFXMLLoader(this.shoppingCart);
+            }
+            Parent newSceneRoot = customLoader.load("/com/pizzaburger/cart.fxml");
+            Scene newScene = new Scene(newSceneRoot);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(newScene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void restartPizza(ActionEvent event) {
+        currentPizza = generateDefaultPizza();
+        updateCrustDisplay(currentPizza);
+        updateSauceDisplay(currentPizza);
+
+        currentPizza.resetToppings();
+        updateToppingsListView(currentPizza);
     }
 }

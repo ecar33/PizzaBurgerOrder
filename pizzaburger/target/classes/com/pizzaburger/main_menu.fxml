@@ -32,17 +32,17 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="pizzaViewButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchPizzaScene" text="Add a Pizza" GridPane.halignment="RIGHT">
+                  <Button fx:id="pizzaViewButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToPizzaView" text="Add a Pizza" GridPane.halignment="RIGHT">
                      <GridPane.margin>
                         <Insets right="120.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="burgerViewButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchBurgerScene" text="Add a Burger">
+                  <Button fx:id="burgerViewButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToBurgerView" text="Add a Burger">
                      <GridPane.margin>
                         <Insets left="120.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="viewCartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="View Cart" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="viewCartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="View Cart" GridPane.halignment="CENTER" onAction="#switchToCartView" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="30.0" />
                      </GridPane.margin>

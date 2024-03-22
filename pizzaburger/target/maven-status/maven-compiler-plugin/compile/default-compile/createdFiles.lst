@@ -2,6 +2,8 @@ com/pizzaburger/pizza/topping/SausageTopping.class
 com/pizzaburger/App.class
 com/pizzaburger/pizza/crust/ThickCrust.class
 com/pizzaburger/controllers/PizzaController.class
+com/pizzaburger/util/CustomFXMLLoader.class
+com/pizzaburger/controllers/CartController.class
 com/pizzaburger/pizza/Pizza.class
 com/pizzaburger/pizza/topping/PepperoniTopping.class
 com/pizzaburger/pizza/sauce/TomatoSauce.class
@@ -12,6 +14,7 @@ com/pizzaburger/pizza/sauce/WhiteGarlicSauce.class
 com/pizzaburger/pizza/crust/PizzaCrust.class
 com/pizzaburger/pizza/crust/CheeseCrust.class
 com/pizzaburger/controllers/MainMenuController.class
+com/pizzaburger/cart/ShoppingCart.class
 com/pizzaburger/controllers/BurgerController.class
 com/pizzaburger/pizza/topping/VeggieTopping.class
 com/pizzaburger/pizza/topping/PepperTopping.class
@@ -19,6 +22,7 @@ com/pizzaburger/pizza/PizzaMappings.class
 com/pizzaburger/pizza/topping/MeatTopping.class
 com/pizzaburger/pizza/PizzaMain.class
 com/pizzaburger/pizza/topping/PizzaTopping.class
+com/pizzaburger/cart/ShoppingCartConsumer.class
 com/pizzaburger/pizza/sauce/PizzaSauce.class
 com/pizzaburger/pizza/topping/MozzarellaTopping.class
 com/pizzaburger/pizza/crust/ThinCrust.class

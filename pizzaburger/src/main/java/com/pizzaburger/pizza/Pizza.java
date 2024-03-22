@@ -25,6 +25,13 @@ public class Pizza extends AbstractMenuItem {
 		this.pizzaComponents = new ArrayList<AbstractMenuItem>();
 	}
 
+	public Pizza(PizzaCrust crust, PizzaSauce sauce) {
+		this.crust = crust;
+		this.sauce = sauce;
+		this.toppingList = new ArrayList<PizzaTopping>();
+		this.pizzaComponents = new ArrayList<AbstractMenuItem>();
+	}
+
 	public PizzaCrust getCrust() {
 		return this.crust;
 	}
@@ -112,6 +119,10 @@ public class Pizza extends AbstractMenuItem {
 				pizzaComponents.add(topping);
 			}
 		}
+	}
+
+	public void resetToppings() {
+		toppingList = new ArrayList<PizzaTopping>();
 	}
 
 	public ArrayList<AbstractMenuItem> getComponents() {
