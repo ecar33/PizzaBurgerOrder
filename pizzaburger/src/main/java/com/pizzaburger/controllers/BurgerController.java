@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -28,6 +29,9 @@ public class BurgerController implements ShoppingCartConsumer {
     private CustomFXMLLoader customLoader;
 
     @FXML
+    private Label bunLabel, sauceLabel;
+
+    @FXML
     private ChoiceBox<String> sauceChoiceBox, bunChoiceBox;
 
     @FXML
@@ -37,7 +41,7 @@ public class BurgerController implements ShoppingCartConsumer {
     private ListView<String> toppingsListView;
 
     private List<CheckBox> toppingCheckBoxList;
-    private Burger currentBurger;
+    private Burger currentBurger = generateDefaultBurger();
 
     @FXML
     public void initialize() {
@@ -56,6 +60,13 @@ public class BurgerController implements ShoppingCartConsumer {
         // Initialize the currentBurger with default selections
         currentBurger = new Burger(BurgerMappings.bunMapping.get(bunChoiceBox.getValue()),
                 BurgerMappings.sauceMapping.get(sauceChoiceBox.getValue()));
+    }
+
+    private Burger generateDefaultBurger() {
+        BurgerSauce ketchupSauce = new KetchupSauce();
+        BurgerBun sesameSeedBun = new SesameSeedBun();
+        Burger defaultBurger = new Burger(sesameSeedBun, ketchupSauce);
+        return defaultBurger;
     }
 
     @Override
@@ -153,8 +164,7 @@ public class BurgerController implements ShoppingCartConsumer {
         if (currentBurger.getBun() != null) {
             // Assuming your BurgerBun class has a toString method that returns the bun type
             String bunType = currentBurger.getBun().toString();
-            // Update a label or text field in your UI here. For example:
-            // bunLabel.setText("Selected Bun: " + bunType);
+            bunLabel.setText(bunType);
         }
     }
 
@@ -164,8 +174,7 @@ public class BurgerController implements ShoppingCartConsumer {
             // Assuming your BurgerSauce class has a toString method that returns the sauce
             // type
             String sauceType = currentBurger.getSauce().toString();
-            // Update a label or text field in your UI here. For example:
-            // sauceLabel.setText("Selected Sauce: " + sauceType);
+            sauceLabel.setText(sauceType);
         }
     }
 
