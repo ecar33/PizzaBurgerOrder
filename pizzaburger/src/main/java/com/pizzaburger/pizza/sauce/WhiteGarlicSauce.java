@@ -8,4 +8,9 @@ public class WhiteGarlicSauce extends PizzaSauce {
 	public String toString() {
 		return "White Garlic Sauce";
 	}
+
+	public Double getPrice() {
+		return 3.25;
+	}
+
 }

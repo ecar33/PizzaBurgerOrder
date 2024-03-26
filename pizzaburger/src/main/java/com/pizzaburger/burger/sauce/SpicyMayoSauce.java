@@ -8,4 +8,10 @@ public class SpicyMayoSauce extends BurgerSauce {
 	public String toString() {
 		return "Spicy Mayo Sauce";
 	}
+
+	@Override
+	public Double getPrice() {
+		return .80; 
+	}
+
 }

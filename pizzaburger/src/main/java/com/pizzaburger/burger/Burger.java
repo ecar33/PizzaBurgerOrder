@@ -57,18 +57,16 @@ public class Burger extends AbstractMenuItem {
     this.bun = bun;
   }
 
-
-  	/**
-	 * In addition to setting toppings, setTopping also appends the topping list
-	 * into the burgerComponents list for future displays
-	 * 
-	 * @param topping the selected toppings
-	 */
-	public void setTopping(ArrayList<BurgerTopping> toppings) {
-		this.toppingList = toppings;
-		this.getComponents().addAll(toppings);
-	}
-
+  /**
+   * In addition to setting toppings, setTopping also appends the topping list
+   * into the burgerComponents list for future displays
+   * 
+   * @param topping the selected toppings
+   */
+  public void setTopping(ArrayList<BurgerTopping> toppings) {
+    this.toppingList = toppings;
+    this.getComponents().addAll(toppings);
+  }
 
   public BurgerSauce getSauce() {
     return this.sauce;
@@ -115,25 +113,53 @@ public class Burger extends AbstractMenuItem {
     }
   }
 
+  /**
+   * Resets the toppings to an empty list and clears them from the
+   * burgerComponents.
+   * Also resets the flag indicating whether the burger has four or more toppings.
+   */
   public void resetToppings() {
     toppingList = new ArrayList<BurgerTopping>();
+    // Remove all instances of BurgerTopping from burgerComponents
     burgerComponents.removeIf(item -> item instanceof BurgerTopping);
     hasFourOrMoreToppings = false;
   }
 
+  /**
+   * Returns the list of all components (bun, sauce, and toppings) of the burger.
+   * 
+   * @return a list of AbstractMenuItem representing all components of the burger
+   */
   public ArrayList<AbstractMenuItem> getComponents() {
     return this.burgerComponents;
   }
 
+  /**
+   * Adds a component to the burger, updating the burgerComponents list.
+   * 
+   * @param item the component (bun, sauce, or topping) to add
+   */
   public void addComponent(AbstractMenuItem item) {
     this.burgerComponents.add(item);
   }
 
+  /**
+   * Generates a more detailed string representation of the burger, listing all
+   * its components.
+   * 
+   * @return a string describing the burger with all its components
+   */
   @Override
   public String toNiceString() {
     return "Burger with: " + toString();
   }
 
+  /**
+   * Overrides the default toString method to provide a concise description of the
+   * burger, including its bun, sauce, and toppings.
+   * 
+   * @return a string representation of the burger
+   */
   @Override
   public String toString() {
     String burgerDesc = bun + ", " + sauce;
@@ -143,21 +169,38 @@ public class Burger extends AbstractMenuItem {
     return burgerDesc;
   }
 
+  /**
+   * Displays each component of the burger along with its price.
+   */
   public void display() {
     for (MenuItem m : this.burgerComponents) {
       System.out.printf("%s $%.2f\n", m.toNiceString(), m.getPrice());
     }
   }
 
+  /**
+   * Checks if the burger has four or more toppings.
+   * 
+   * @return true if there are four or more toppings, false otherwise
+   */
   public boolean checkIfFourOrMoreToppings() {
     return this.toppingList.size() >= 4;
   }
 
+  /**
+   * Sorts the components of the burger by price and then displays them.
+   */
   public void displaySorted() {
     Collections.sort(this.burgerComponents);
     display();
   }
 
+  /**
+   * Calculates the total price of the burger by summing the prices of all its
+   * components.
+   * 
+   * @return the total price of the burger
+   */
   @Override
   public Double getPrice() {
     Double total = 0.0;
@@ -166,4 +209,5 @@ public class Burger extends AbstractMenuItem {
     }
     return total;
   }
+
 }

@@ -8,4 +8,10 @@ public class VeggieTopping extends PizzaTopping {
 	public String toString() {
 		return "Veggie Topping";
 	}
+
+
+	public Double getPrice() {
+		return .90 ; // default price for vegetable toppings
+	}
+
 }

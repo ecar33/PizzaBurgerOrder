@@ -43,7 +43,6 @@ com/pizzaburger/pizza/topping/VeggieTopping.class
 com/pizzaburger/burger/sauce/KetchupSauce.class
 com/pizzaburger/burger/topping/VeggieTopping.class
 com/pizzaburger/burger/topping/MeatTopping.class
-com/pizzaburger/pizza/PizzaMain.class
 com/pizzaburger/pizza/sauce/PizzaSauce.class
 com/pizzaburger/pizza/topping/MozzarellaTopping.class
 com/pizzaburger/pizza/crust/ThinCrust.class

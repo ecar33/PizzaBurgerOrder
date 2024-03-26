@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import com.pizzaburger.cart.ShoppingCart;
 import com.pizzaburger.cart.ShoppingCartConsumer;
@@ -20,6 +19,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 
 import javafx.event.ActionEvent;
 
+/**
+ * Controller for handling the receipt view in the ordering app.
+ * Displays a detailed receipt for the user's order, including itemized
+ * list of pizzas and burgers, their prices, and the total amount due.
+ */
 public class ReciptController implements ShoppingCartConsumer {
 
   private ShoppingCart shoppingCart;
@@ -31,10 +35,16 @@ public class ReciptController implements ShoppingCartConsumer {
   @FXML
   Button newOrderButton;
 
-  // Subtotal properties
+  // Properties to hold the subtotals of burgers and pizzas
   private final DoubleProperty burgerSubtotal = new SimpleDoubleProperty(0.0);
   private final DoubleProperty pizzaSubtotal = new SimpleDoubleProperty(0.0);
 
+  /**
+   * Sets the shopping cart instance for this controller and generates the initial
+   * receipt.
+   * 
+   * @param shoppingCart The ShoppingCart instance containing the current order.
+   */
   @Override
   public void setShoppingCart(ShoppingCart shoppingCart) {
     this.shoppingCart = shoppingCart;
@@ -42,6 +52,11 @@ public class ReciptController implements ShoppingCartConsumer {
     generateReceipt();
   }
 
+  /**
+   * Generates the receipt for the current order, listing each item with its price
+   * and
+   * calculating the total amount due.
+   */
   public void generateReceipt() {
     // Reset subtotals
     burgerSubtotal.set(0.0);
@@ -69,6 +84,12 @@ public class ReciptController implements ShoppingCartConsumer {
 
   }
 
+  /**
+   * Initiates a new order by clearing the shopping cart and switching back to the
+   * main menu view.
+   * 
+   * @param event The action event that triggered this method.
+   */
   @FXML
   private void startNewOrder(ActionEvent event) {
     // Clear the shopping cart for the next order
@@ -76,6 +97,12 @@ public class ReciptController implements ShoppingCartConsumer {
     switchToMenuView(event);
   }
 
+  /**
+   * Switches the view back to the main menu, allowing the user to start building
+   * a new order.
+   * 
+   * @param event The action event that triggered this method.
+   */
   @FXML
   private void switchToMenuView(ActionEvent event) {
     try {

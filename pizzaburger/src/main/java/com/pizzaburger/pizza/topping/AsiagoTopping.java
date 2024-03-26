@@ -7,4 +7,9 @@ public class AsiagoTopping extends CheeseTopping {
 	public String toString() {
 		return "Asiago Topping";
 	}
+
+	public Double getPrice() {
+		return 1.25; 
+	}
+
 }

@@ -11,6 +11,6 @@ public class CheeseTopping extends PizzaTopping {
 
 	@Override
 	public Double getPrice() {
-		return 0.20; 
+		return 1.00; // default price for cheese toppings
 	}
 }

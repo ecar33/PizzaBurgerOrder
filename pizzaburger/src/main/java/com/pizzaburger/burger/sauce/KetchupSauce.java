@@ -8,4 +8,10 @@ public class KetchupSauce extends BurgerSauce {
 	public String toString() {
 		return "Ketchup Sauce";
 	}
+
+	@Override
+	public Double getPrice() {
+		return .40;
+	}
+
 }

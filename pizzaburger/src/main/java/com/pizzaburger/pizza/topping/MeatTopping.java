@@ -39,7 +39,7 @@ public class MeatTopping extends PizzaTopping {
 
 	@Override
 	public Double getPrice() {
-		return 0.60; 
+		return 1.20; // default price for meat toppings
 	}
 
 }

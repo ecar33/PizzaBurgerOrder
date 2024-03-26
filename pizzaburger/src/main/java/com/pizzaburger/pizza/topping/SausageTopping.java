@@ -15,5 +15,10 @@ public class SausageTopping extends MeatTopping {
 	public String toString() {
 		return "Sausage Topping";
 	}
+
+	public Double getPrice() {
+		return 1.75; 
+	}
+
 }
 

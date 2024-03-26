@@ -11,6 +11,6 @@ public class CheeseTopping extends BurgerTopping {
 
 	@Override
 	public Double getPrice() {
-		return 0.20; 
+		return 0.50; 
 	}
 }

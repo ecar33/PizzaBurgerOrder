@@ -12,6 +12,6 @@ public abstract class PizzaSauce extends AbstractMenuItem {
 	}
 
 	public Double getPrice() {
-		return 0.30; // default price for sauce
+		return 2.00; // default price for sauce
 	}
 }

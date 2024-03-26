@@ -7,4 +7,10 @@ public class TomatoTopping extends VeggieTopping {
 	public String toString() {
 		return "Tomato Topping";
 	}
+
+	@Override
+	public Double getPrice() {
+		return .30;
+	}
+
 }

@@ -35,9 +35,8 @@ public class ThickCrust extends PizzaCrust {
 		return ingredient.equals("Cauliflower")? "Handle carefully - thick cauliflower crusts might fall apart." : "";
 	}
 
-	@Override
 	public Double getPrice() {
-		return 1.20; 
+		return 3.50; 
 	}
 
 }

@@ -9,4 +9,10 @@ public class MustardSauce extends BurgerSauce {
 	public String toString() {
 		return "Mustard Sauce";
 	}
+
+	@Override
+	public Double getPrice() {
+		return .40; 
+	}
+
 }

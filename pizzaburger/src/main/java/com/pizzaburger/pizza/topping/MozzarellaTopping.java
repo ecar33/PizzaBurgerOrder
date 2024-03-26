@@ -7,4 +7,9 @@ public class MozzarellaTopping extends CheeseTopping {
 	public String toString() {
 		return "Mozzarella Topping";
 	}
+
+	public Double getPrice() {
+		return 1.25;
+	}
+
 }

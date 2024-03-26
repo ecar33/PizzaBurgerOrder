@@ -8,4 +8,8 @@ public class TomatoSauce extends PizzaSauce {
 	public String toString() {
 		return "Tomato Sauce";
 	}
+
+	public Double getPrice() {
+		return 1.75; 
+	}
 }

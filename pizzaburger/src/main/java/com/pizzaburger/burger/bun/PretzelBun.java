@@ -8,4 +8,10 @@ public class PretzelBun extends BurgerBun {
 	public String toString() {
 		return "Pretzel Bun";
 	}
+
+	@Override
+	public Double getPrice() {
+		return 2.25; 
+	}
+
 }

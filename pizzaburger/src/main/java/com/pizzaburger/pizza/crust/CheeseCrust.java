@@ -8,4 +8,8 @@ public class CheeseCrust extends PizzaCrust {
 	public String toString() {
 		return "Cheese Crust";
 	}
+
+	public Double getPrice() {
+		return 5.00; 
+	}
 }

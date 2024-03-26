@@ -86,6 +86,11 @@ public class Pizza extends AbstractMenuItem {
 		this.sauce = sauce;
 	}
 
+	/**
+	 * Returns the list of toppings on the pizza.
+	 * 
+	 * @return A list of pizza toppings.
+	 */
 	public ArrayList<PizzaTopping> getToppings() {
 		return this.toppingList;
 	}
@@ -102,8 +107,9 @@ public class Pizza extends AbstractMenuItem {
 	}
 
 	/**
-	 * Add one topping into the toppping list.
-	 * In addtition, add topping to the pizzaComponents list
+	 * Add one topping into the toppping list and wraps around if needed (no more
+	 * than 4 toppings).
+	 * In addition, add topping to the pizzaComponents list
 	 * 
 	 * @param topping the selected topping
 	 */
@@ -126,26 +132,46 @@ public class Pizza extends AbstractMenuItem {
 		}
 	}
 
+	/**
+	 * Clears all toppings from the pizza.
+	 */
 	public void resetToppings() {
 		toppingList = new ArrayList<PizzaTopping>();
 		pizzaComponents.removeIf(item -> item instanceof BurgerTopping);
-    hasFourOrMoreToppings = false;
+		hasFourOrMoreToppings = false;
 	}
 
+	/**
+	 * Gets all components of the pizza, including crust, sauce, and toppings.
+	 * 
+	 * @return A list of all pizza components.
+	 */
 	public ArrayList<AbstractMenuItem> getComponents() {
 		return this.pizzaComponents;
 	}
 
+	/**
+	 * Adds a component to the pizza.
+	 * 
+	 * @param item The component to add.
+	 */
 	public void addComponent(AbstractMenuItem item) {
 		this.pizzaComponents.add(item);
 	}
 
+	/**
+	 * Provides a detailed string representation of the pizza.
+	 * 
+	 * @return A string describing the pizza.
+	 */
 	public String toNiceString() {
 		return "Pizza is: " + toString();
 	}
 
 	/**
-	 * @returns the pizza string as concatenation of all its component strings
+	 * Concatenates all pizza component strings into a single description.
+	 * 
+	 * @return A string representation of the pizza.
 	 */
 	public String toString() {
 		String pizzaDesc = crust + ", " + sauce;
@@ -156,7 +182,7 @@ public class Pizza extends AbstractMenuItem {
 	}
 
 	/**
-	 * Lists all pizza components
+	 * Displays each component of the pizza along with its price.
 	 */
 	public void display() {
 		for (MenuItem m : this.pizzaComponents) {
@@ -165,18 +191,17 @@ public class Pizza extends AbstractMenuItem {
 	}
 
 	/**
-	 * Checks if the toppings count is greater than or equal to four.
+	 * /**
+	 * Checks if the pizza has four or more toppings.
 	 * 
-	 * @return true if the number of toppings is four or fewer, false otherwise.
+	 * @return true if there are four or more toppings, false otherwise.
 	 */
 	public boolean checkIfFourOrMoreToppings() {
 		return this.toppingList.size() >= 4;
 	}
 
 	/**
-	 * Sorts the pizza components before listing them.
-	 * Note that sort is done in-place, this permanently changes the ordering in the
-	 * list.
+	 * Sorts the components of the pizza by price and then displays them.
 	 */
 	public void displaySorted() {
 		Collections.sort(this.pizzaComponents);
@@ -184,7 +209,9 @@ public class Pizza extends AbstractMenuItem {
 	}
 
 	/**
-	 * Compute pizza price as the sum of its parts.
+	 * Calculates the total price of the pizza.
+	 * 
+	 * @return The total price of the pizza.
 	 */
 	public Double getPrice() {
 		Double total = 0.0;

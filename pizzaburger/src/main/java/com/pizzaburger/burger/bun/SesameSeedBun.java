@@ -8,4 +8,10 @@ public class SesameSeedBun extends BurgerBun {
 	public String toString() {
 		return "Sesame Seed Bun";
 	}
+
+	@Override
+	public Double getPrice() {
+		return .80; 
+	}
+
 }

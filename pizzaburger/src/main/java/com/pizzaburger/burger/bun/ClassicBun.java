@@ -11,7 +11,7 @@ public class ClassicBun extends BurgerBun {
 
 	@Override
 	public Double getPrice() {
-		return 1.20; 
+		return .80; 
 	}
 
 }

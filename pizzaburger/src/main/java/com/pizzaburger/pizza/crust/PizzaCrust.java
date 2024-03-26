@@ -37,6 +37,6 @@ public abstract class PizzaCrust extends AbstractMenuItem {
 	}
 	
 	public Double getPrice() {
-		return 0.75; // default price for crust
+		return 3.00; // default price for crust
 	}
 }
