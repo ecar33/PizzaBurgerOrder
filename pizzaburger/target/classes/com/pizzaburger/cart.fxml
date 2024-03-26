@@ -15,24 +15,53 @@
          <children>
             <VBox alignment="CENTER" prefHeight="394.0" prefWidth="611.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" textFill="#303030">
-                     <font>
-                        <Font name="Open Sans" size="14.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="155.0" prefWidth="450.0" />
                   <VBox alignment="CENTER" prefHeight="444.0" prefWidth="678.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="507.0" text="Your Shopping Cart" />
-                        <Label prefHeight="20.0" prefWidth="463.0" text="Your order:" />
                         <HBox alignment="CENTER" prefHeight="262.0" prefWidth="595.0">
                            <children>
-                              <ListView fx:id="pizzaListView" prefHeight="262.0" prefWidth="350.0" />
-                              <ListView fx:id="pizzaListView" prefHeight="262.0" prefWidth="350.0" />
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Burgers" textFill="#303030">
+                                       <font>
+                                          <Font name="Open Sans" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ListView fx:id="burgerListView" prefHeight="229.0" prefWidth="184.0" />
+                                    <HBox alignment="CENTER" prefHeight="43.0" prefWidth="339.0">
+                                       <children>
+                                          <Label text="Subtotal: " />
+                                          <Label fx:id="burgerSubtotalLabel" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Pizzas" textFill="#303030">
+                                       <font>
+                                          <Font name="Open Sans" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ListView fx:id="pizzaListView" prefHeight="228.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                                    <HBox alignment="CENTER" prefHeight="42.0" prefWidth="339.0">
+                                       <children>
+                                          <Label text="Subtotal: " />
+                                          <Label fx:id="pizzaSubtotalLabel" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Total Price: " />
+                        <Label fx:id="totalPriceLabel" />
+                     </children>
+                  </HBox>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="177.0" prefWidth="537.0">
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -40,12 +69,16 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="79.0" prefWidth="678.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Checkout">
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToMenuView" text="Add more items">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToMenuView" text="Back to menu" />
+                              <Button mnemonicParsing="false" onAction="#switchToReceiptView" text="Checkout">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
                         </HBox>
                      </children>

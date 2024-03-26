@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -15,6 +15,9 @@ import java.util.List;
 
 import com.pizzaburger.cart.ShoppingCart;
 import com.pizzaburger.cart.ShoppingCartConsumer;
+import com.pizzaburger.pizza.Pizza;
+import com.pizzaburger.pizza.PizzaMappings;
+import com.pizzaburger.pizza.topping.PizzaTopping;
 import com.pizzaburger.burger.*;
 import com.pizzaburger.burger.bun.*;
 import com.pizzaburger.burger.sauce.*;
@@ -35,12 +38,11 @@ public class BurgerController implements ShoppingCartConsumer {
     private ChoiceBox<String> sauceChoiceBox, bunChoiceBox;
 
     @FXML
-    private CheckBox cheddarCheckBox, pepperjackCheckBox, baconCheckBox, pattyCheckBox, lettuceCheckBox, tomatoCheckBox;
+    private Button cheddarCheckBox, pepperjackCheckBox, baconCheckBox, pattyCheckBox, lettuceCheckBox, tomatoCheckBox;
 
     @FXML
     private ListView<String> toppingsListView;
 
-    private List<CheckBox> toppingCheckBoxList;
     private Burger currentBurger = generateDefaultBurger();
 
     @FXML
@@ -54,12 +56,7 @@ public class BurgerController implements ShoppingCartConsumer {
         updateBunDisplay();
         updateSauceDisplay();
 
-        toppingCheckBoxList = Arrays.asList(cheddarCheckBox, pepperjackCheckBox, baconCheckBox, pattyCheckBox,
-                lettuceCheckBox, tomatoCheckBox);
-
         // Initialize the currentBurger with default selections
-        currentBurger = new Burger(BurgerMappings.bunMapping.get(bunChoiceBox.getValue()),
-                BurgerMappings.sauceMapping.get(sauceChoiceBox.getValue()));
     }
 
     private Burger generateDefaultBurger() {
@@ -76,7 +73,7 @@ public class BurgerController implements ShoppingCartConsumer {
     }
 
     @FXML
-    private void handleAddBun(ActionEvent event) {
+    private void handleSetBun(ActionEvent event) {
         String selectedBun = bunChoiceBox.getSelectionModel().getSelectedItem();
         BurgerBun bun = BurgerMappings.bunMapping.get(selectedBun);
         if (bun != null) {
@@ -86,7 +83,7 @@ public class BurgerController implements ShoppingCartConsumer {
     }
 
     @FXML
-    private void handleAddSauce(ActionEvent event) {
+    private void handleSetSauce(ActionEvent event) {
         String selectedSauce = sauceChoiceBox.getSelectionModel().getSelectedItem();
         BurgerSauce sauce = BurgerMappings.sauceMapping.get(selectedSauce);
         if (sauce != null) {
@@ -94,24 +91,20 @@ public class BurgerController implements ShoppingCartConsumer {
             updateSauceDisplay();
         }
     }
-
     @FXML
     private void handleAddTopping(ActionEvent event) {
-        toppingCheckBoxList.forEach(checkBox -> {
-            if (checkBox.isSelected()) {
-                BurgerTopping topping = BurgerMappings.toppingMapping.get(checkBox.getText());
-                if (topping != null) {
-                    currentBurger.addTopping(topping);
-                    updateToppingsDisplay();
-                }
-            }
-        });
+        Button button = (Button) event.getSource();
+        BurgerTopping topping = BurgerMappings.toppingMapping.get(button.getText());
+        if (topping != null) {
+            currentBurger.addTopping(topping);
+        }
+        updateToppingsListView(currentBurger);
     }
 
     @FXML
     private void handleAddBurger(ActionEvent event) {
         shoppingCart.addBurger(currentBurger);
-        switchToCartView(event); // Assuming you implement this method similarly to PizzaController
+        switchToCartView(event); 
     }
 
     // Method to switch back to the main menu
@@ -148,21 +141,16 @@ public class BurgerController implements ShoppingCartConsumer {
     private void restartBurger(ActionEvent event) {
         currentBurger = new Burger(BurgerMappings.bunMapping.get(bunChoiceBox.getValue()),
                 BurgerMappings.sauceMapping.get(sauceChoiceBox.getValue()));
-        resetToppingsSelection();
+        
+        updateToppingsListView(currentBurger);
         // You may also want to reset the ChoiceBoxes to their default selection here
         sauceChoiceBox.getSelectionModel().selectFirst();
         bunChoiceBox.getSelectionModel().selectFirst();
     }
 
-    // Helper method to reset the toppings selection UI
-    private void resetToppingsSelection() {
-        toppingCheckBoxList.forEach(checkBox -> checkBox.setSelected(false));
-    }
-
     // Updates the display for the selected bun
     private void updateBunDisplay() {
         if (currentBurger.getBun() != null) {
-            // Assuming your BurgerBun class has a toString method that returns the bun type
             String bunType = currentBurger.getBun().toString();
             bunLabel.setText(bunType);
         }
@@ -171,22 +159,18 @@ public class BurgerController implements ShoppingCartConsumer {
     // Updates the display for the selected sauce
     private void updateSauceDisplay() {
         if (currentBurger.getSauce() != null) {
-            // Assuming your BurgerSauce class has a toString method that returns the sauce
-            // type
             String sauceType = currentBurger.getSauce().toString();
             sauceLabel.setText(sauceType);
         }
     }
 
-    // Updates the display for the selected toppings
-    private void updateToppingsDisplay() {
-        toppingsListView.getItems().clear(); // Clear the list view first
+    public void updateToppingsListView(Burger burger) {
+        toppingsListView.getItems().clear();
+
         for (BurgerTopping topping : currentBurger.getToppings()) {
-            // Assuming your BurgerTopping class has a toString method that returns the
-            // topping name
-            String toppingName = topping.toString();
-            toppingsListView.getItems().add(toppingName); // Add each topping to the list view
+            toppingsListView.getItems().add(topping.toString());
         }
     }
+
 
 }

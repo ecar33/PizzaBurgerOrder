@@ -31,8 +31,6 @@ public class MainMenuController implements ShoppingCartConsumer {
         if (this.customLoader == null) {
           this.customLoader = new CustomFXMLLoader(this.shoppingCart);
         }
-
-        shoppingCart.printCart();
         Parent newSceneRoot = customLoader.load("/com/pizzaburger/pizza_view.fxml");
         Scene newScene = new Scene(newSceneRoot);
   

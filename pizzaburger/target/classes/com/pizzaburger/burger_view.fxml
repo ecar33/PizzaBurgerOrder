@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -13,26 +12,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-   prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;"
-   xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="com.pizzaburger.controllers.BurgerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.BurgerController">
    <children>
       <HBox prefHeight="394.0" prefWidth="800.0">
          <children>
             <VBox prefHeight="394.0" prefWidth="570.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0"
-                     prefWidth="476.0" text="Welcome to Johnny's Crazy Pizza and Burgers"
-                     textFill="#303030">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Welcome to Basil's Pizza and Burgers" textFill="#303030">
                      <font>
                         <Font name="Open Sans" size="14.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="158.0"
-                           HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="158.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label text="Select a bun:" textFill="#303030" />
                               <ChoiceBox fx:id="bunChoiceBox" prefHeight="19.0" prefWidth="117.0">
@@ -40,16 +33,14 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </ChoiceBox>
-                              <Button fx:id="addBunButton" mnemonicParsing="false"
-                                 onAction="#handleAddBun" text="Add bun">
+                              <Button fx:id="addBunButton" mnemonicParsing="false" onAction="#handleSetBun" text="Set bun">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Button>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="206.0"
-                           HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="206.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label text="Select a sauce:" textFill="#303030" />
                               <ChoiceBox fx:id="sauceChoiceBox" prefHeight="19.0" prefWidth="117.0">
@@ -57,8 +48,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </ChoiceBox>
-                              <Button fx:id="addSauceButton" mnemonicParsing="false"
-                                 onAction="#handleAddSauce" text="Add sauce">
+                              <Button fx:id="addSauceButton" mnemonicParsing="false" onAction="#handleSetSauce" text="Set sauce">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -74,81 +64,53 @@
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <TabPane prefHeight="159.0" prefWidth="599.0"
-                           style="-fx-tab-header-background: #ffffff;"
-                           tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="159.0" prefWidth="599.0" style="-fx-tab-header-background: #ffffff;" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
-                              <Tab text="Meat">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                       prefWidth="200.0">
-                                       <children>
-                                          <CheckBox fx:id="baconCheckBox" layoutX="14.0"
-                                             layoutY="14.0" mnemonicParsing="false" text="Bacon"
-                                             textFill="#606060" />
-                                          <CheckBox fx:id="pattyCheckBox" layoutX="14.0"
-                                             layoutY="43.0" mnemonicParsing="false" text="Patty"
-                                             textFill="#606060" />
-                                          <Button alignment="CENTER" layoutX="168.0" layoutY="87.0"
-                                             mnemonicParsing="false" onAction="#handleAddTopping"
-                                             text="Add toppings" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                              <Tab text="Cheese">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                       prefWidth="200.0">
-                                       <children>
-                                          <CheckBox fx:id="cheddarCheckBox" layoutX="14.0"
-                                             layoutY="14.0" mnemonicParsing="false" text="Cheddar"
-                                             textFill="#606060" />
-                                          <CheckBox fx:id="pepperjackCheckBox" layoutX="14.0"
-                                             layoutY="43.0" mnemonicParsing="false"
-                                             text="Pepperjack" textFill="#606060" />
-                                          <Button layoutX="168.0" layoutY="87.0"
-                                             mnemonicParsing="false" onAction="#handleAddTopping"
-                                             text="Add toppings" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                              <Tab text="Veggie">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                       prefWidth="200.0">
-                                       <children>
-                                          <CheckBox fx:id="lettuceCheckBox" layoutX="14.0"
-                                             layoutY="14.0" mnemonicParsing="false" text="Lettuce"
-                                             textFill="#606060" />
-                                          <CheckBox fx:id="tomatoCheckBox" layoutX="14.0"
-                                             layoutY="43.0" mnemonicParsing="false" text="Tomato"
-                                             textFill="#606060" />
-                                          <Button layoutX="168.0" layoutY="87.0"
-                                             mnemonicParsing="false" onAction="#handleAddTopping"
-                                             text="Add toppings" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
+                               <Tab text="Meat">
+                                   <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                           <children>
+                                               <Button fx:id="baconButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Bacon" textFill="#606060" />
+                                               <Button fx:id="pattyButton" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Patty" textFill="#606060" />
+                                           </children>
+                                       </AnchorPane>
+                                   </content>
+                               </Tab>
+                               <Tab text="Cheese">
+                                   <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                           <children>
+                                               <Button fx:id="cheddarButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Cheddar" textFill="#606060" />
+                                               <Button fx:id="pepperjackButton" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Pepperjack" textFill="#606060" />
+                                           </children>
+                                       </AnchorPane>
+                                   </content>
+                               </Tab>
+                               <Tab text="Veggie">
+                                   <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                           <children>
+                                               <Button fx:id="lettuceButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Lettuce" textFill="#606060" />
+                                               <Button fx:id="tomatoButton" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleAddTopping" text="Tomato" textFill="#606060" />
+                                           </children>
+                                       </AnchorPane>
+                                   </content>
+                               </Tab>
                            </tabs>
-                        </TabPane>
+                       </TabPane>
                      </children>
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </VBox>
-                  <Button fx:id="menuButton" mnemonicParsing="false" onAction="#switchToMenuView"
-                     prefHeight="26.0" prefWidth="57.0" text="Menu">
+                  <Button fx:id="menuButton" mnemonicParsing="false" onAction="#switchToMenuView" prefHeight="26.0" prefWidth="57.0" text="Menu">
                      <VBox.margin>
                         <Insets left="15.0" top="15.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="394.0" prefWidth="238.0"
-               style="-fx-background-color: f5f5f5;">
+            <VBox alignment="CENTER" prefHeight="394.0" prefWidth="238.0" style="-fx-background-color: f5f5f5;">
                <children>
                   <Label alignment="CENTER" text="Current Burger:" />
                   <VBox alignment="CENTER" prefHeight="354.0" prefWidth="234.0">
@@ -177,29 +139,22 @@
                               </Label>
                               <Label text="Toppings:">
                                  <padding>
-                                    <Insets left="5.0" />
+                                    <Insets bottom="5.0" left="5.0" />
                                  </padding>
                               </Label>
-                              <ListView fx:id="toppingsListView" prefHeight="336.0"
-                                 prefWidth="250.0">
+                              <ListView fx:id="toppingsListView" prefHeight="336.0" prefWidth="250.0">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding>
                               </ListView>
                               <HBox alignment="CENTER" prefHeight="36.0" prefWidth="230.0">
                                  <children>
-                                    <Button fx:id="addBurgerButton" alignment="CENTER"
-                                       contentDisplay="TOP" mnemonicParsing="false"
-                                       onAction="#handleAddBurger" prefHeight="26.0"
-                                       prefWidth="94.0" text="Add Burger">
+                                    <Button fx:id="addBurgerButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleAddBurger" prefHeight="26.0" prefWidth="94.0" text="Add Burger">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="restartBurgerButton" alignment="CENTER"
-                                       contentDisplay="TOP" mnemonicParsing="false"
-                                       onAction="#restartBurger" prefHeight="26.0" prefWidth="94.0"
-                                       text="Restart">
+                                    <Button fx:id="restartBurgerButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#restartBurger" prefHeight="26.0" prefWidth="94.0" text="Restart">
                                        <HBox.margin>
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>

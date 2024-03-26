@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #FFF9F0;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: #FFF9F0;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.ReciptController">
    <children>
       <HBox layoutX="70.0" layoutY="3.0" prefHeight="394.0" prefWidth="678.0">
          <children>
@@ -27,12 +27,19 @@
                         <Label prefHeight="20.0" prefWidth="463.0" text="Your order:" />
                         <HBox alignment="CENTER" prefHeight="262.0" prefWidth="595.0">
                            <children>
-                              <ListView fx:id="pizzaListView" prefHeight="262.0" prefWidth="210.0" />
-                              <ListView fx:id="burgerListView" prefHeight="262.0" prefWidth="210.0" />
+                              <ListView fx:id="receiptListView" prefHeight="262.0" prefWidth="335.0">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin></ListView>
                            </children>
                         </HBox>
                      </children>
                   </VBox>
+                  <Label text="Have a great day!">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
                   <VBox alignment="CENTER" fillWidth="false" prefHeight="177.0" prefWidth="537.0">
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -40,12 +47,10 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="79.0" prefWidth="678.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Checkout">
+                              <Button fx:id="newOrderButton" onAction="#startNewOrder" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Start a new order">
                                  <HBox.margin>
-                                    <Insets right="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Back to menu" />
+                                    <Insets bottom="15.0" />
+                                 </HBox.margin></Button>
                            </children>
                         </HBox>
                      </children>

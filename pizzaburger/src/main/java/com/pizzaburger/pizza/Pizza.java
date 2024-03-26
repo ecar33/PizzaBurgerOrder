@@ -3,6 +3,7 @@ package com.pizzaburger.pizza;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.pizzaburger.burger.topping.BurgerTopping;
 import com.pizzaburger.menuitem.AbstractMenuItem;
 import com.pizzaburger.menuitem.MenuItem;
 import com.pizzaburger.pizza.crust.PizzaCrust;
@@ -32,6 +33,8 @@ public class Pizza extends AbstractMenuItem {
 		this.sauce = sauce;
 		this.toppingList = new ArrayList<PizzaTopping>();
 		this.pizzaComponents = new ArrayList<AbstractMenuItem>();
+		addComponent(sauce);
+		addComponent(crust);
 	}
 
 	public PizzaCrust getCrust() {
@@ -125,6 +128,8 @@ public class Pizza extends AbstractMenuItem {
 
 	public void resetToppings() {
 		toppingList = new ArrayList<PizzaTopping>();
+		pizzaComponents.removeIf(item -> item instanceof BurgerTopping);
+    hasFourOrMoreToppings = false;
 	}
 
 	public ArrayList<AbstractMenuItem> getComponents() {

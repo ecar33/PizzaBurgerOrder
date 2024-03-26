@@ -37,13 +37,11 @@ public class PizzaController implements ShoppingCartConsumer {
     private ChoiceBox<String> crustChoiceBox, sauceChoiceBox;
 
     @FXML
-    private Button addCrustButton, addSauceButton, addMeatToppingsButton, addCheeseToppingsButton,
-            addVeggieToppingsButton, addPizzaButton, checkoutButton;
-
-    @FXML
     private Button sausageButton, pepperoniButton, asiagoButton, mozzarellaButton, pepperButton,
             mushroomButton;
+            
 
+    @Override
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
         this.customLoader = new CustomFXMLLoader(this.shoppingCart); 
@@ -73,7 +71,7 @@ public class PizzaController implements ShoppingCartConsumer {
 
     // Example of a handler method for adding a crust. Adapt as necessary.
     @FXML
-    private void handleAddCrust(ActionEvent event) {
+    private void handleSetCrust(ActionEvent event) {
         String selectedCrust = crustChoiceBox.getSelectionModel().getSelectedItem();
         if (!selectedCrust.isEmpty()) {
             PizzaCrust crust = PizzaMappings.crustMapping.get(selectedCrust);
@@ -103,7 +101,7 @@ public class PizzaController implements ShoppingCartConsumer {
     }
 
     @FXML
-    private void handleAddSauce(ActionEvent event) {
+    private void handleSetSauce(ActionEvent event) {
         String selectedSauce = sauceChoiceBox.getSelectionModel().getSelectedItem();
         if (!selectedSauce.isEmpty()) {
             PizzaSauce sauce = PizzaMappings.sauceMapping.get(selectedSauce);

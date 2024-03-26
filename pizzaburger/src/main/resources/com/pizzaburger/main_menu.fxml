@@ -14,7 +14,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="156.0" layoutY="25.0" prefHeight="350.0" prefWidth="488.0">
          <children>
-            <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="600.0" text="Welcome to Johnny's Crazy Pizza and Burgers" textFill="#303030">
+            <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="600.0" text="Welcome to Basil's Pizza and Burgers" textFill="#303030">
                <font>
                   <Font name="Open Sans" size="16.0" />
                </font>
@@ -42,7 +42,7 @@
                         <Insets left="120.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="viewCartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="View Cart" GridPane.halignment="CENTER" onAction="#switchToCartView" GridPane.rowIndex="1">
+                  <Button fx:id="viewCartButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToCartView" text="View Cart" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="30.0" />
                      </GridPane.margin>

@@ -12,14 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" 
-xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.PizzaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: e9dac6;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.PizzaController">
    <children>
       <HBox prefHeight="394.0" prefWidth="800.0">
          <children>
             <VBox prefHeight="394.0" prefWidth="570.0">
                <children>
-                  <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Welcome to Johnny's Crazy Pizza and Burgers" textFill="#303030">
+                  <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="476.0" text="Welcome to Basil's Pizza and Burgers" textFill="#303030">
                      <font>
                         <Font name="Open Sans" size="14.0" />
                      </font>
@@ -34,7 +33,7 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.P
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </ChoiceBox>
-                              <Button fx:id="addCrustButton" mnemonicParsing="false" onAction="#handleAddCrust" text="Add crust">
+                              <Button fx:id="addCrustButton" mnemonicParsing="false" onAction="#handleSetCrust" text="Set crust">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -49,7 +48,7 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.P
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </ChoiceBox>
-                              <Button fx:id="addSauceButton" mnemonicParsing="false" onAction="#handleAddSauce" text="Add sauce">
+                              <Button fx:id="addSauceButton" mnemonicParsing="false" onAction="#handleSetSauce" text="Set sauce">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -143,21 +142,21 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pizzaburger.controllers.P
                               </Label>
                               <Label text="Toppings:">
                                  <padding>
-                                    <Insets left="5.0" />
+                                    <Insets bottom="5.0" left="5.0" />
                                  </padding>
                               </Label>
-                              <ListView fx:id="toppingsListView" prefHeight="336.0" prefWidth="250.0">
+                              <ListView fx:id="toppingsListView" prefHeight="228.0" prefWidth="230.0">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding></ListView>
                               <HBox alignment="CENTER" prefHeight="36.0" prefWidth="230.0">
                                  <children>
-                                    <Button onAction="#handleAddPizza" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Add Pizza">
+                                    <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleAddPizza" prefHeight="26.0" prefWidth="94.0" text="Add Pizza">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button onAction="#restartPizza" fx:id="restartPizzaButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Restart">
+                                    <Button fx:id="restartPizzaButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#restartPizza" prefHeight="26.0" prefWidth="94.0" text="Restart">
                                        <HBox.margin>
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>

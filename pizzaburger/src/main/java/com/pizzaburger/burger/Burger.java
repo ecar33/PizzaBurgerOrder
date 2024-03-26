@@ -5,7 +5,6 @@ import java.util.Collections;
 
 import com.pizzaburger.menuitem.AbstractMenuItem;
 import com.pizzaburger.menuitem.MenuItem;
-import com.pizzaburger.pizza.topping.PizzaTopping;
 import com.pizzaburger.burger.bun.BurgerBun;
 import com.pizzaburger.burger.sauce.BurgerSauce;
 import com.pizzaburger.burger.topping.BurgerTopping;
@@ -69,7 +68,6 @@ public class Burger extends AbstractMenuItem {
 		this.toppingList = toppings;
 		this.getComponents().addAll(toppings);
 	}
-
 
 
   public BurgerSauce getSauce() {

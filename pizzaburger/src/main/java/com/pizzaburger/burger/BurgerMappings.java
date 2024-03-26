@@ -25,7 +25,7 @@ public class BurgerMappings {
 
         // Topping mappings
         toppingMapping.put("Cheddar", new CheddarTopping());
-        toppingMapping.put("Pepper Jack", new PepperjackTopping());
+        toppingMapping.put("Pepperjack", new PepperjackTopping());
         toppingMapping.put("Bacon", new BaconTopping());
         toppingMapping.put("Patty", new PattyTopping());
         toppingMapping.put("Lettuce", new LettuceTopping());

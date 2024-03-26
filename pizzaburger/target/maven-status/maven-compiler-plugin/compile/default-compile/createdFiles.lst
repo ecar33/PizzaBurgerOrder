@@ -7,6 +7,7 @@ com/pizzaburger/pizza/Pizza.class
 com/pizzaburger/pizza/sauce/TomatoSauce.class
 com/pizzaburger/pizza/topping/MushroomTopping.class
 com/pizzaburger/burger/bun/BurgerBun.class
+com/pizzaburger/controllers/ReciptController.class
 com/pizzaburger/burger/sauce/MustardSauce.class
 com/pizzaburger/cart/ShoppingCart.class
 com/pizzaburger/burger/topping/CheddarTopping.class
