@@ -23,7 +23,7 @@
                   <HBox prefHeight="155.0" prefWidth="450.0" />
                   <VBox alignment="CENTER" prefHeight="444.0" prefWidth="678.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="507.0" text="Your Shopping Cart" />
+                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="507.0" text="Receipt" />
                         <Label prefHeight="20.0" prefWidth="463.0" text="Your order:" />
                         <HBox alignment="CENTER" prefHeight="262.0" prefWidth="595.0">
                            <children>

@@ -10,14 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-import java.util.Arrays;
-import java.util.List;
-
 import com.pizzaburger.cart.ShoppingCart;
 import com.pizzaburger.cart.ShoppingCartConsumer;
-import com.pizzaburger.pizza.Pizza;
-import com.pizzaburger.pizza.PizzaMappings;
-import com.pizzaburger.pizza.topping.PizzaTopping;
 import com.pizzaburger.burger.*;
 import com.pizzaburger.burger.bun.*;
 import com.pizzaburger.burger.sauce.*;
@@ -25,6 +19,12 @@ import com.pizzaburger.burger.topping.*;
 import com.pizzaburger.util.CustomFXMLLoader;
 
 import javafx.event.ActionEvent;
+
+/**
+ * Controls the UI for burger customization, handling interactions for bun,
+ * sauce, and topping selection,
+ * and managing transitions to other views.
+ */
 
 public class BurgerController implements ShoppingCartConsumer {
 
@@ -45,8 +45,14 @@ public class BurgerController implements ShoppingCartConsumer {
 
     private Burger currentBurger = generateDefaultBurger();
 
+    /**
+     * Initializes the controller, setting up the initial state of the UI components
+     * and registering event handlers.
+     */
+
     @FXML
     public void initialize() {
+
         sauceChoiceBox.getItems().addAll("Ketchup", "Spicy Mayo", "Mustard");
         bunChoiceBox.getItems().addAll("Sesame Seed", "Classic", "Pretzel Bun");
 
@@ -59,6 +65,13 @@ public class BurgerController implements ShoppingCartConsumer {
         // Initialize the currentBurger with default selections
     }
 
+    /**
+     * Generates and returns a {@link Burger} instance with default settings.
+     * This typically includes a default bun, sauce, and no toppings.
+     * 
+     * @return A {@link Burger} instance with default settings.
+     */
+
     private Burger generateDefaultBurger() {
         BurgerSauce ketchupSauce = new KetchupSauce();
         BurgerBun sesameSeedBun = new SesameSeedBun();
@@ -66,12 +79,26 @@ public class BurgerController implements ShoppingCartConsumer {
         return defaultBurger;
     }
 
+    /**
+     * Assigns a {@link ShoppingCart} to this controller and initializes any
+     * necessary components
+     * that depend on the shopping cart.
+     * 
+     * @param shoppingCart The shopping cart to assign to this controller.
+     */
+
     @Override
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
         this.customLoader = new CustomFXMLLoader(this.shoppingCart);
     }
 
+    /**
+     * Handles the event to set the selected bun type for the current burger based
+     * on user selection.
+     * 
+     * @param event The event triggered by selecting a bun type.
+     */
     @FXML
     private void handleSetBun(ActionEvent event) {
         String selectedBun = bunChoiceBox.getSelectionModel().getSelectedItem();
@@ -82,6 +109,12 @@ public class BurgerController implements ShoppingCartConsumer {
         }
     }
 
+    /**
+     * Handles the event to set the selected sauce type for the current burger based
+     * on user selection.
+     * 
+     * @param event The event triggered by selecting a sauce type.
+     */
     @FXML
     private void handleSetSauce(ActionEvent event) {
         String selectedSauce = sauceChoiceBox.getSelectionModel().getSelectedItem();
@@ -91,6 +124,13 @@ public class BurgerController implements ShoppingCartConsumer {
             updateSauceDisplay();
         }
     }
+
+    /**
+     * Handles the event to add a topping to the current burger based on user
+     * interaction.
+     * 
+     * @param event The event triggered by selecting a topping.
+     */
     @FXML
     private void handleAddTopping(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -98,16 +138,27 @@ public class BurgerController implements ShoppingCartConsumer {
         if (topping != null) {
             currentBurger.addTopping(topping);
         }
-        updateToppingsListView(currentBurger);
+        updateToppingsListView();
     }
 
+    /**
+     * Adds the current burger to the shopping cart and switches the view to the
+     * cart view.
+     * 
+     * @param event The event triggered by the add to cart action.
+     */
     @FXML
     private void handleAddBurger(ActionEvent event) {
         shoppingCart.addBurger(currentBurger);
-        switchToCartView(event); 
+        switchToCartView(event);
     }
 
-    // Method to switch back to the main menu
+    /**
+     * Switches the view to the main menu, allowing the user to navigate back to the
+     * start.
+     * 
+     * @param event The event triggered by the navigation action.
+     */
     @FXML
     private void switchToMenuView(ActionEvent event) {
         try {
@@ -122,7 +173,12 @@ public class BurgerController implements ShoppingCartConsumer {
         }
     }
 
-    // Method to switch to the cart view, showing the current order
+    /**
+     * Switches the view to the cart view, displaying the current items in the
+     * shopping cart.
+     * 
+     * @param event The event triggered by the navigation action.
+     */
     @FXML
     private void switchToCartView(ActionEvent event) {
         try {
@@ -136,41 +192,50 @@ public class BurgerController implements ShoppingCartConsumer {
         }
     }
 
-    // Method to reset the burger customization for a new order
+    /**
+     * Resets the burger customization, setting it back to default settings.
+     * This method is triggered by a UI action, typically a button press.
+     * 
+     * @param event The event triggered by the reset action.
+     */
     @FXML
     private void restartBurger(ActionEvent event) {
-        currentBurger = new Burger(BurgerMappings.bunMapping.get(bunChoiceBox.getValue()),
-                BurgerMappings.sauceMapping.get(sauceChoiceBox.getValue()));
-        
-        updateToppingsListView(currentBurger);
-        // You may also want to reset the ChoiceBoxes to their default selection here
-        sauceChoiceBox.getSelectionModel().selectFirst();
-        bunChoiceBox.getSelectionModel().selectFirst();
+        currentBurger = generateDefaultBurger();
+        updateBunDisplay();
+        updateSauceDisplay();
+
+        currentBurger.resetToppings();
+        updateToppingsListView();
+
     }
 
-    // Updates the display for the selected bun
+    /**
+     * Updates the display to show the currently selected bun type in the UI.
+     */
     private void updateBunDisplay() {
-        if (currentBurger.getBun() != null) {
-            String bunType = currentBurger.getBun().toString();
-            bunLabel.setText(bunType);
-        }
+        String bunType = currentBurger.getBun().toString();
+        bunLabel.setText(bunType);
     }
 
-    // Updates the display for the selected sauce
+    /**
+     * Updates the display to show the currently selected sauce type
+     * in the UI.
+     */
     private void updateSauceDisplay() {
-        if (currentBurger.getSauce() != null) {
-            String sauceType = currentBurger.getSauce().toString();
-            sauceLabel.setText(sauceType);
-        }
+        String sauceType = currentBurger.getSauce().toString();
+        sauceLabel.setText(sauceType);
     }
 
-    public void updateToppingsListView(Burger burger) {
+    /**
+     * Updates the toppings list view to display all the toppings
+     * currently added to the burger.
+     */
+    private void updateToppingsListView() {
         toppingsListView.getItems().clear();
 
         for (BurgerTopping topping : currentBurger.getToppings()) {
             toppingsListView.getItems().add(topping.toString());
         }
     }
-
 
 }

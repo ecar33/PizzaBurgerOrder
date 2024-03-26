@@ -58,8 +58,8 @@ public class PizzaController implements ShoppingCartConsumer {
         crustChoiceBox.getSelectionModel().selectFirst();
         sauceChoiceBox.getSelectionModel().selectFirst();
 
-        updateCrustDisplay(currentPizza);
-        updateSauceDisplay(currentPizza);
+        updateCrustDisplay();
+        updateSauceDisplay();
     }
 
     private Pizza generateDefaultPizza() {
@@ -79,24 +79,24 @@ public class PizzaController implements ShoppingCartConsumer {
                 currentPizza.setCrust(crust);
             }
         }
-        updateCrustDisplay(currentPizza);
+        updateCrustDisplay();
     }
 
-    public void updateToppingsListView(Pizza pizza) {
+    private void updateToppingsListView() {
         toppingsListView.getItems().clear();
 
-        for (PizzaTopping topping : pizza.getToppings()) {
+        for (PizzaTopping topping : currentPizza.getToppings()) {
             toppingsListView.getItems().add(topping.toString());
         }
     }
 
-    public void updateCrustDisplay(Pizza pizza) {
-        String crust = pizza.getCrust().toString();
+    private void updateCrustDisplay() {
+        String crust = currentPizza.getCrust().toString();
         crustLabel.setText(crust);
     }
 
-    public void updateSauceDisplay(Pizza pizza) {
-        String sauce = pizza.getSauce().toString();
+    private void updateSauceDisplay() {
+        String sauce = currentPizza.getSauce().toString();
         sauceLabel.setText(sauce);
     }
 
@@ -109,7 +109,7 @@ public class PizzaController implements ShoppingCartConsumer {
                 currentPizza.setSauce(sauce);
             }
         }
-        updateSauceDisplay(currentPizza);
+        updateSauceDisplay();
     }
 
     @FXML
@@ -119,7 +119,7 @@ public class PizzaController implements ShoppingCartConsumer {
         if (topping != null) {
             currentPizza.addTopping(topping);
         }
-        updateToppingsListView(currentPizza);
+        updateToppingsListView();
     }
 
     @FXML
@@ -167,10 +167,10 @@ public class PizzaController implements ShoppingCartConsumer {
     @FXML
     private void restartPizza(ActionEvent event) {
         currentPizza = generateDefaultPizza();
-        updateCrustDisplay(currentPizza);
-        updateSauceDisplay(currentPizza);
+        updateCrustDisplay();
+        updateSauceDisplay();
 
         currentPizza.resetToppings();
-        updateToppingsListView(currentPizza);
+        updateToppingsListView();
     }
 }
